@@ -9,16 +9,13 @@ cd CMSSW_10_2_13/src
 cmsenv
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
 cd HiggsAnalysis/CombinedLimit
-
-cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
-git fetch origin
 git checkout v8.1.0
 
 cd $CMSSW_BASE/src
 ```
-We will also make use another package, `CombineHarvester`, which contains some high-level tools for working with combine. The following command will download the repository and checkout just the parts of it we need for this tutorial:
+We will also make use another package, `CombineHarvester`, which contains some high-level tools for working with combine. The following command will  checkout the repository:
 ```shell
-bash <(curl -s https://raw.githubusercontent.com/cms-analysis/CombineHarvester/master/CombineTools/scripts/sparse-checkout-https.sh)
+git clone https://github.com/cms-analysis/CombineHarvester.git
 ```
 Now make sure the CMSSW area is compiled:
 ```shell 
@@ -50,7 +47,7 @@ The output of this is
 RooRealVar::MH = 125  L(120 - 130)
 ```
 
-So we now have a RooRealVar called MH, with default value 125 and range 120-130. We can now access the object and  change for example its value:
+So we now have a RooRealVar called MH, with default value 125 and range 120-130. We can now access the object and change for example its value:
 
 ```
 MH.setVal(130)
@@ -59,7 +56,7 @@ print MH.getVal()
 
 Which should print the new value, 130. 
 
-In particle detectors we typically don't observe this particle mass but usually define some observable which is sensitive to this mass. Lets assume we can detect and reconstruct the decay products of the H-boson and measure the invariant mass of those particles. We need to make another variable which represents that invariant mass. Make a RooRealVar "mass" with a default value of 100 GeV and a range 80-200
+In particle detectors we typically don't observe this particle mass but usually define some observable which is sensitive to it. Let's assume we can detect and reconstruct the decay products of the H boson and measure the invariant mass of those particles. We need to make another variable which represents that invariant mass. Make a RooRealVar "mass" with a default value of 100 GeV and a range 80-200
 
 (solution to show with toggle:)
 
@@ -67,7 +64,7 @@ In particle detectors we typically don't observe this particle mass but usually 
 mass = RooRealVar("m","m (GeV)",100,80,200)
 ```
 
-In the perfect world we would perfectly measure the exact mass of the particle in every single event. However, our detectors are usually far from perfect so there will be some resolution effect. Lets assume the resolution of our measurement of the invariant mass is 10 GeV (range 0-20 GeV) and call it "sigma"
+In the perfect world we would measure the exact mass of the particle in every single event. However, our detectors are usually far from perfect so there will be some resolution effect. Lets assume the resolution of our measurement of the invariant mass is 10 GeV (range 0-20 GeV) and call it "sigma"
 
 ```
 sigma = RooRealVar("resolution","#sigma",10,0,20)
