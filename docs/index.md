@@ -528,18 +528,24 @@ Start by setting a threshold of 0, i.e. `[channel] autoMCStats 0`, to force the 
 
 ### Nuisance parameter impacts
 
+For this section we're going to use a different datacard - the only reason for this is that what we're going to do next is more informative for a lower mass point (at 200 GeV). So we will first make a new workspace:
+
+```shell
+text2workspace.py datacard_part2b.txt -m 200 -o workspace_part2b.root
+```
+
 It is often useful to examine in detail the effects the systematic uncertainties have on the signal strength measurement. This is often referred to as calculating the "impact" of each uncertainty. What this means is to determine the shift in the signal strength, with respect to the best-fit, that is induced if a given nuisance parameter is shifted by its $\pm1\sigma$ post-fit uncertainty values. If the signal strength shifts a lot, it tells us that it has a strong dependency on this systematic uncertainty. In fact, what we are measuring here is strongly related to the correlation coefficient between the signal strength and the nuisance parameter. The `MultiDimFit` method has an algorithm for calculating the impact for a given systematic: `--algo impact -P [parameter name]`, but it is typical to use a higher-level script, `combineTool.py` (part of the CombineHarvester package you checked out at the beginning) to automatically run the impacts for all parameters. Full documentation on this is given [here](http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/nonstandard/#nuisance-parameter-impacts). There is a three step process for running this. First we perform an initial fit for the signal strength and its uncertainty:
 
 ```shell
-combineTool.py -M Impacts -d workspace_part2.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doInitialFit
+combineTool.py -M Impacts -d workspace_part2b.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doInitialFit
 ```
 Then we run the impacts for all the nuisance parameters:
 ```shell
-combineTool.py -M Impacts -d workspace_part2.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doFits
+combineTool.py -M Impacts -d workspace_part2b.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doFits
 ```
 This will take a little bit of time. When finished we collect all the output and convert it to a json file:
 ```shell
-combineTool.py -M Impacts -d workspace_part2.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --output impacts.json
+combineTool.py -M Impacts -d workspace_part2b.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --output impacts.json
 ```
 We can then make a plot showing the pulls and parameter impacts, sorted by the largest impact:
 ```shell
