@@ -3,7 +3,7 @@ jmax    4 number of processes minus 1
 kmax    * number of nuisance parameters
 --------------------------------------------------------------------------------
 shapes * signal_region datacard_part2b.shapes.root signal_region/$PROCESS signal_region/$PROCESS_$SYSTEMATIC
-shapes bbHtautau signal_region datacard_part2b_nocrs.shapes.root signal_region/bbHtautau$MASS signal_region/bbHtautau$MASS_$SYSTEMATIC
+shapes bbHtautau signal_region datacard_part2b.shapes.root signal_region/bbHtautau$MASS signal_region/bbHtautau$MASS_$SYSTEMATIC
 --------------------------------------------------------------------------------
 bin          signal_region   
 observation  3416.0          
