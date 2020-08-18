@@ -1,3 +1,13 @@
+## Introduction to statistical methods
+
+In these exercises we will be focussing on some of the tools you can use to produce the statistical results for your analysis, not the theoretical principles of statistics for particle physics. If you are not familiar with the main concepts we'd recommend that, before you start, you read [this short article from Physics Today](http://web.ipac.caltech.edu/staff/fmasci/home/astro_refs/ParticleStatistics_PhysToday_2012.pdf) which introduces likelihoods, bayesian vs frequentist statistics, hypothesis testing etc.
+
+If you'd like more theoretical background you can also have a look at:
+
+- [The Academic Training Lectures series on Statistics](https://indico.cern.ch/event/358542/)
+- [The ATLAS-CMS note on the procedure for the Higgs combination](https://cds.cern.ch/record/1379837/files/NOTE2011_005.pdf); this includes a discussion of many of the conventions we use on ATLAS and CMS for the statistical analysis
+- [A paper on the asymptotic approximation](https://arxiv.org/abs/1007.1727)
+
 ## Getting started
 
 We need to set up a new CMSSW area and checkout the combine package: 
