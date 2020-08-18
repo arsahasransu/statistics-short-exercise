@@ -84,7 +84,8 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#getting-started">Getting started</a></li>
+        <li class="first-level active"><a href="#introduction-to-statistical-methods">Introduction to statistical methods</a></li>
+        <li class="first-level "><a href="#getting-started">Getting started</a></li>
         <li class="first-level "><a href="#roofit">RooFit</a></li>
             <li class="second-level"><a href="#variables">Variables</a></li>
                 
@@ -115,6 +116,14 @@
 </div></div>
         <div class="col-md-9" role="main">
 
+<h2 id="introduction-to-statistical-methods">Introduction to statistical methods</h2>
+<p>In these exercises we will be focussing on some of the tools you can use to produce the statistical results for your analysis, not the theoretical principles of statistics for particle physics. If you are not familiar with the main concepts we'd recommend that, before you start, you read <a href="http://web.ipac.caltech.edu/staff/fmasci/home/astro_refs/ParticleStatistics_PhysToday_2012.pdf">this short article from Physics Today</a> which introduces likelihoods, bayesian vs frequentist statistics, hypothesis testing etc.</p>
+<p>If you'd like more theoretical background you can also have a look at:</p>
+<ul>
+<li><a href="https://indico.cern.ch/event/358542/">The Academic Training Lectures series on Statistics</a></li>
+<li><a href="https://cds.cern.ch/record/1379837/files/NOTE2011_005.pdf">The ATLAS-CMS note on the procedure for the Higgs combination</a>; this includes a discussion of many of the conventions we use on ATLAS and CMS for the statistical analysis</li>
+<li><a href="https://arxiv.org/abs/1007.1727">A paper on the asymptotic approximation</a></li>
+</ul>
 <h2 id="getting-started">Getting started</h2>
 <p>We need to set up a new CMSSW area and checkout the combine package: </p>
 <pre><code class="shell">export SCRAM_ARCH=slc7_amd64_gcc700
@@ -123,16 +132,13 @@ cd CMSSW_10_2_13/src
 cmsenv
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
 cd HiggsAnalysis/CombinedLimit
-
-cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
-git fetch origin
 git checkout v8.1.0
 
 cd $CMSSW_BASE/src
 </code></pre>
 
-<p>We will also make use another package, <code>CombineHarvester</code>, which contains some high-level tools for working with combine. The following command will download the repository and checkout just the parts of it we need for this tutorial:</p>
-<pre><code class="shell">bash &lt;(curl -s https://raw.githubusercontent.com/cms-analysis/CombineHarvester/master/CombineTools/scripts/sparse-checkout-https.sh)
+<p>We will also make use another package, <code>CombineHarvester</code>, which contains some high-level tools for working with combine. The following command will  checkout the repository:</p>
+<pre><code class="shell">git clone https://github.com/cms-analysis/CombineHarvester.git
 </code></pre>
 
 <p>Now make sure the CMSSW area is compiled:</p>
@@ -158,18 +164,18 @@ MH.Print()
 <pre><code>RooRealVar::MH = 125  L(120 - 130)
 </code></pre>
 
-<p>So we now have a RooRealVar called MH, with default value 125 and range 120-130. We can now access the object and  change for example its value:</p>
+<p>So we now have a RooRealVar called MH, with default value 125 and range 120-130. We can now access the object and change for example its value:</p>
 <pre><code>MH.setVal(130)
 print MH.getVal()
 </code></pre>
 
 <p>Which should print the new value, 130. </p>
-<p>In particle detectors we typically don't observe this particle mass but usually define some observable which is sensitive to this mass. Lets assume we can detect and reconstruct the decay products of the H-boson and measure the invariant mass of those particles. We need to make another variable which represents that invariant mass. Make a RooRealVar "mass" with a default value of 100 GeV and a range 80-200</p>
+<p>In particle detectors we typically don't observe this particle mass but usually define some observable which is sensitive to it. Let's assume we can detect and reconstruct the decay products of the H boson and measure the invariant mass of those particles. We need to make another variable which represents that invariant mass. Make a RooRealVar "mass" with a default value of 100 GeV and a range 80-200</p>
 <p>(solution to show with toggle:)</p>
 <pre><code>mass = RooRealVar(&quot;m&quot;,&quot;m (GeV)&quot;,100,80,200)
 </code></pre>
 
-<p>In the perfect world we would perfectly measure the exact mass of the particle in every single event. However, our detectors are usually far from perfect so there will be some resolution effect. Lets assume the resolution of our measurement of the invariant mass is 10 GeV (range 0-20 GeV) and call it "sigma"</p>
+<p>In the perfect world we would measure the exact mass of the particle in every single event. However, our detectors are usually far from perfect so there will be some resolution effect. Lets assume the resolution of our measurement of the invariant mass is 10 GeV (range 0-20 GeV) and call it "sigma"</p>
 <pre><code>sigma = RooRealVar(&quot;resolution&quot;,&quot;#sigma&quot;,10,0,20)
 </code></pre>
 
@@ -434,7 +440,7 @@ alpha  shape    -          1
 <li>In the list of systematic uncertainties some are marked as shape instead of lnN</li>
 </ul>
 <p>The syntax of the "shapes" line is: <code>shapes [process] [channel] [file] [histogram] [histogram_with_systematics]</code>. It is possible to use the <code>*</code> wildcard to map multiple processes and/or channels with one line. The histogram entries can contain the <code>$PROCESS</code>, <code>$CHANNEL</code> and <code>$MASS</code> place-holders which will be substituted when searching for a given (process, channel) combination. The value of <code>$MASS</code> is specified by the <code>-m</code> argument when combine. By default the observed data process name will be <code>data_obs</code>.</p>
-<p>Shape uncertainties can be added by supplying two additional histograms for a process, corresponding to the distribution obtained by shifting that parameter up and down by one standard deviation. These shapes will be interpolated quadratically for shifts below <span><span class="MathJax_Preview">1\sigma</span><script type="math/tex">1\sigma</script></span> and linearly beyond. The normalizations are interpolated linearly in log scale just like we do for log-normal uncertainties.</p>
+<p>Shape uncertainties can be added by supplying two additional histograms for a process, corresponding to the distribution obtained by shifting that parameter up and down by one standard deviation. These shapes will be interpolated with a polynomial for shifts below <span><span class="MathJax_Preview">1\sigma</span><script type="math/tex">1\sigma</script></span> and linearly beyond. The normalizations are interpolated linearly in log scale just like we do for log-normal uncertainties.</p>
 <p>The final argument of the "shapes" line above should contain the <code>$SYSTEMATIC</code> place-holder which will be substituted by the systematic name given in the datacard.</p>
 <p>In the list of uncertainties the interpretation of the values for <code>shape</code> lines is a bit different from <code>lnN</code>. The effect can be "-" or 0 for no effect, 1 for normal effect, and possibly something different from 1 to test larger or smaller effects (in that case, the unit Gaussian is scaled by that factor before using it as parameter for the interpolation).</p>
 <p>In this section we will use a datacard corresponding to the full distribution that was shown at the start of section 1, not just the high mass region. Have a look at <code>datacard_part2.txt</code>: this is still currently a one-bin counting experiment, however the yields are much higher since we now consider the full range of <span><span class="MathJax_Preview">M_{\mathrm{T}}^{\mathrm{tot}}</span><script type="math/tex">M_{\mathrm{T}}^{\mathrm{tot}}</script></span>. If you run the asymptotic limit calculation on this you should find the sensitivity is significantly worse than before.</p>
@@ -458,7 +464,7 @@ alpha  shape    -          1
 <p>A more general way of blinding is to use combine's toy and Asimov dataset generating functionality. You can read more about this <a href="http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/runningthetool/#toy-data-generation">here</a>. These options can be used with any method in combine, not just <code>AsymptoticLimits</code>.</p>
 <p><strong>Task:</strong> Calculate a blind limit by generating a background-only Asimov with the <code>-t -1</code> option instead of using the <code>AsymptoticLimits</code> specific options. You should find the observed limit is the same as the expected. Then see what happens if you inject a signal into the Asimov dataset using the <code>--expectSignal [X]</code> option.</p>
 <h3 id="using-fitdiagnostics">Using FitDiagnostics</h3>
-<p>We will now explore one of the most commonly used modes of combine: <code>FitDiagnostics</code> . As well as allowing us to make a <strong>measurement</strong> of some physical quantity (as opposed to just setting a limit on it), this method is useful to gain additional information about the model and the behaviour of the fit. It performs two fits:</p>
+<p>We will now explore one of the most commonly used modes of combine: <code>FitDiagnostics</code>. As well as allowing us to make a <strong>measurement</strong> of some physical quantity (as opposed to just setting a limit on it), this method is useful to gain additional information about the model and the behaviour of the fit. It performs two fits:</p>
 <ul>
 <li>A "background-only" (b-only) fit: first POI (usually "r") fixed to zero</li>
 <li>A "signal+background" (s+b) fit: all POIs are floating</li>
@@ -682,5 +688,5 @@ Start by setting a threshold of 0, i.e. <code>[channel] autoMCStats 0</code>, to
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-08-18 13:38:25
+Build Date UTC : 2020-08-18 16:16:01
 -->
