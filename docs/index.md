@@ -323,7 +323,7 @@ The limits are given on a parameter called `r`. This is the default **parameter 
 
 The expected limit is given under the background-only hypothesis. The median value under this hypothesis as well as the quantiles needed to give the 68% and 95% intervals are also calculated. These are all the ingredients needed to produce the standard limit plots you will see in many CMS results, for example the $\sigma \times \mathcal{B}$ limits for the $\text{bb}\phi\rightarrow\tau\tau$ process:
 
-![](images/CMS-DAS.003.jpeg)
+![](images/CMS-DAS.002.jpeg)
 
 In this case we only computed the values for one signal mass hypothesis, indicated by a red dashed line.
 
