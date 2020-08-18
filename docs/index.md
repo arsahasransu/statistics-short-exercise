@@ -28,8 +28,8 @@ Finally we will checkout the working directory for these tutorials - this contai
 
 ```shell
 cd $CMSSW_BASE/src
-git clone https://gitlab.cern.ch/adewit/cms-das-stats-2020.git
-cd cms-das-stats-2020
+git clone https://github.com/CMSDAS/statistics-short-exercise.git
+cd statistics-short-exercise
 ```
 
 ## RooFit
