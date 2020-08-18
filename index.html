@@ -560,16 +560,20 @@ Start by setting a threshold of 0, i.e. <code>[channel] autoMCStats 0</code>, to
 <li><strong>Advanced task:</strong> See what happens if the Poisson threshold is increased. Based on your results, what threshold would you recommend for this analysis?</li>
 </ul>
 <h3 id="nuisance-parameter-impacts">Nuisance parameter impacts</h3>
+<p>For this section we're going to use a different datacard - the only reason for this is that what we're going to do next is more informative for a lower mass point (at 200 GeV). So we will first make a new workspace:</p>
+<pre><code class="shell">text2workspace.py datacard_part2b.txt -m 200 -o workspace_part2b.root
+</code></pre>
+
 <p>It is often useful to examine in detail the effects the systematic uncertainties have on the signal strength measurement. This is often referred to as calculating the "impact" of each uncertainty. What this means is to determine the shift in the signal strength, with respect to the best-fit, that is induced if a given nuisance parameter is shifted by its <span><span class="MathJax_Preview">\pm1\sigma</span><script type="math/tex">\pm1\sigma</script></span> post-fit uncertainty values. If the signal strength shifts a lot, it tells us that it has a strong dependency on this systematic uncertainty. In fact, what we are measuring here is strongly related to the correlation coefficient between the signal strength and the nuisance parameter. The <code>MultiDimFit</code> method has an algorithm for calculating the impact for a given systematic: <code>--algo impact -P [parameter name]</code>, but it is typical to use a higher-level script, <code>combineTool.py</code> (part of the CombineHarvester package you checked out at the beginning) to automatically run the impacts for all parameters. Full documentation on this is given <a href="http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/nonstandard/#nuisance-parameter-impacts">here</a>. There is a three step process for running this. First we perform an initial fit for the signal strength and its uncertainty:</p>
-<pre><code class="shell">combineTool.py -M Impacts -d workspace_part2.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doInitialFit
+<pre><code class="shell">combineTool.py -M Impacts -d workspace_part2b.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doInitialFit
 </code></pre>
 
 <p>Then we run the impacts for all the nuisance parameters:</p>
-<pre><code class="shell">combineTool.py -M Impacts -d workspace_part2.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doFits
+<pre><code class="shell">combineTool.py -M Impacts -d workspace_part2b.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --doFits
 </code></pre>
 
 <p>This will take a little bit of time. When finished we collect all the output and convert it to a json file:</p>
-<pre><code class="shell">combineTool.py -M Impacts -d workspace_part2.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --output impacts.json
+<pre><code class="shell">combineTool.py -M Impacts -d workspace_part2b.root -m 200 --rMin -1 --rMax 2 --robustFit 1 --output impacts.json
 </code></pre>
 
 <p>We can then make a plot showing the pulls and parameter impacts, sorted by the largest impact:</p>
@@ -678,5 +682,5 @@ Start by setting a threshold of 0, i.e. <code>[channel] autoMCStats 0</code>, to
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-08-18 11:47:32
+Build Date UTC : 2020-08-18 13:38:25
 -->
