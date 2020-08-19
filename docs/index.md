@@ -564,3 +564,9 @@ plotImpacts.py -i impacts.json -o impacts
   - Identify the most important uncertainties using the impacts tool.
 
 
+## Further tutorials
+In this exercise we have covered some basics of RooFit and some of the most widely used features of combine. If you'd like to learn more, here are some links to other tutorials:
+
+- [More on RooFit in the combine documentation](http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part5/roofit/) - you're already familiar with the first part of this
+- [A long combine exercise](http://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part5/longexercise/) - again, you're already familiar with most of parts 1 and 2
+- [A recent three-day combine tutorial](https://indico.cern.ch/event/859454/timetable/?view=standard) - the hands-on part covers the long combine exercise, the other sessions cover several more advanced topics
