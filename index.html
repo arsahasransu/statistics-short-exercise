@@ -336,6 +336,8 @@ w-&gt;var(&quot;MH&quot;)-&gt;getVal()
 <pre><code>(double) 120.00000
 </code></pre>
 
+<iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-002" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
 <h2 id="combine">Combine</h2>
 <p>For this course we will work with a simplified version of a real analysis, that nonetheless will have many features of the full analysis. The analysis is a search for an additional heavy neutral Higgs boson decaying to tau lepton pairs. Such a signature is predicted in many extensions of the standard model, in particular the minimal supersymmetric standard model (MSSM). You can read about the analysis in the paper <a href="https://arxiv.org/pdf/1803.06553.pdf">here</a>. The statistical inference makes use of a variable called the total transverse mass (<span><span class="MathJax_Preview">M_{\mathrm{T}}^{\mathrm{tot}}</span><script type="math/tex">M_{\mathrm{T}}^{\mathrm{tot}}</script></span>) that provides good discrimination between the resonant high-mass signal and the main backgrounds, which have a falling distribution in this high-mass region. The events selected in the analysis are split into a several categories which target the main di-tau final states as well as the two main production modes: gluon-fusion (ggH) and b-jet associated production (bbH). One example is given below for the fully-hadronic final state in the b-tag category which targets the bbH signal:</p>
 <p><img alt="" src="images/CMS-DAS.003.jpeg" /></p>
@@ -408,6 +410,8 @@ xsec_ttbar         lnN   1.06            -               -               -      
 <li>The range on the signal strength modifier: <code>--rMin=X</code> and <code>--rMax=Y</code>: In RooFit parameters can optionally have a range specified. The implication of this is that their values cannot be adjusted beyond the limits of this range. The min and max values can be adjusted though, and we might need to do this for our POI <code>r</code> if the order of magnitude of our measurement is different from the default range of <code>[0, 20]</code>. This will be discussed again later in the tutorial.</li>
 <li>Verbosity: <code>-v X</code>: By default combine does not usually produce much output on the screen other the main result at the end. However, much more detailed information can be printed by setting the <code>-v N</code> with N larger than zero. For example at <code>-v 3</code> the logs from the minimizer, Minuit, will also be printed. These are very useful for debugging problems with the fit.</li>
 </ul>
+<iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-003" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
 <h2 id="combine-part-2-shape-based-analysis">Combine part 2: shape-based analysis</h2>
 <h3 id="setting-up-the-datacard">Setting up the datacard</h3>
 <p>Now we move to the next step: instead of a one-bin counting experiment we will fit a binned distribution. In a typical analysis we will produce TH1 histograms of some variable sensitive to the presence of signal: one for the data and one for each signal and background processes. Then we add a few extra lines to the datacard to link the declared processes to these shapes which are saved in a ROOT file, for example:</p>
@@ -593,6 +597,8 @@ Start by setting a threshold of 0, i.e. <code>[channel] autoMCStats 0</code>, to
 <ul>
 <li>Identify the most important uncertainties using the impacts tool.</li>
 </ul>
+<iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-004" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
 <h2 id="further-tutorials">Further tutorials</h2>
 <p>In this exercise we have covered some basics of RooFit and some of the most widely used features of combine. If you'd like to learn more, here are some links to other tutorials:</p>
 <ul>
@@ -698,5 +704,5 @@ Start by setting a threshold of 0, i.e. <code>[channel] autoMCStats 0</code>, to
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-08-24 09:02:25
+Build Date UTC : 2020-08-24 09:06:51
 -->
