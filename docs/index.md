@@ -43,6 +43,8 @@ cd statistics-short-exercise
 
 <iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-001" width="560" height="315" frameborder="0" allowfullscreen></iframe>
 
+Or click [here](https://videos.cern.ch/record/2728491) if the embedded video above doesn't work.
+
 RooFit is an object-oriented analysis environment built on ROOT, with a collection of classes designed to augment ROOT for data modelling. Combine is in turn built on RooFit, so before learning about Combine, it is useful to get to grips with a few RooFit basics. We will do that in this section.
 
 We will use python syntax in this section; you can either call the commands in an interactive python session, or just put them in a .py script. Make sure to do `from ROOT import *` at the top of your script (or in the interactive session)
@@ -260,6 +262,8 @@ You will get the value as set when the workspace was created again, in our case 
 
 <iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-002" width="560" height="315" frameborder="0" allowfullscreen></iframe>
 
+Or click [here](https://videos.cern.ch/record/2728492) if the embedded video above doesn't work.
+
 ## Combine
 
 For this course we will work with a simplified version of a real analysis, that nonetheless will have many features of the full analysis. The analysis is a search for an additional heavy neutral Higgs boson decaying to tau lepton pairs. Such a signature is predicted in many extensions of the standard model, in particular the minimal supersymmetric standard model (MSSM). You can read about the analysis in the paper [here](https://arxiv.org/pdf/1803.06553.pdf). The statistical inference makes use of a variable called the total transverse mass ($M_{\mathrm{T}}^{\mathrm{tot}}$) that provides good discrimination between the resonant high-mass signal and the main backgrounds, which have a falling distribution in this high-mass region. The events selected in the analysis are split into a several categories which target the main di-tau final states as well as the two main production modes: gluon-fusion (ggH) and b-jet associated production (bbH). One example is given below for the fully-hadronic final state in the b-tag category which targets the bbH signal:
@@ -352,6 +356,8 @@ There are other command line options we can supply to combine which will change 
   - Verbosity: `-v X`: By default combine does not usually produce much output on the screen other the main result at the end. However, much more detailed information can be printed by setting the `-v N` with N larger than zero. For example at `-v 3` the logs from the minimizer, Minuit, will also be printed. These are very useful for debugging problems with the fit.
 
 <iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-003" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
+Or click [here](https://videos.cern.ch/record/2728500) if the embedded video above doesn't work.
 
 ## Combine part 2: shape-based analysis
 
@@ -570,6 +576,8 @@ plotImpacts.py -i impacts.json -o impacts
   - Identify the most important uncertainties using the impacts tool.
 
 <iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-004" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
+Or click [here](https://videos.cern.ch/record/2728501) if the embedded video above doesn't work.
 
 ## Further tutorials
 In this exercise we have covered some basics of RooFit and some of the most widely used features of combine. If you'd like to learn more, here are some links to other tutorials:
