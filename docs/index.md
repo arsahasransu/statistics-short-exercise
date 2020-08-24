@@ -258,6 +258,8 @@ You will get the value as set when the workspace was created again, in our case 
 (double) 120.00000
 ```
 
+<iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-002" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
 ## Combine
 
 For this course we will work with a simplified version of a real analysis, that nonetheless will have many features of the full analysis. The analysis is a search for an additional heavy neutral Higgs boson decaying to tau lepton pairs. Such a signature is predicted in many extensions of the standard model, in particular the minimal supersymmetric standard model (MSSM). You can read about the analysis in the paper [here](https://arxiv.org/pdf/1803.06553.pdf). The statistical inference makes use of a variable called the total transverse mass ($M_{\mathrm{T}}^{\mathrm{tot}}$) that provides good discrimination between the resonant high-mass signal and the main backgrounds, which have a falling distribution in this high-mass region. The events selected in the analysis are split into a several categories which target the main di-tau final states as well as the two main production modes: gluon-fusion (ggH) and b-jet associated production (bbH). One example is given below for the fully-hadronic final state in the b-tag category which targets the bbH signal:
@@ -349,6 +351,7 @@ There are other command line options we can supply to combine which will change 
   - The range on the signal strength modifier: `--rMin=X` and `--rMax=Y`: In RooFit parameters can optionally have a range specified. The implication of this is that their values cannot be adjusted beyond the limits of this range. The min and max values can be adjusted though, and we might need to do this for our POI `r` if the order of magnitude of our measurement is different from the default range of `[0, 20]`. This will be discussed again later in the tutorial.
   - Verbosity: `-v X`: By default combine does not usually produce much output on the screen other the main result at the end. However, much more detailed information can be printed by setting the `-v N` with N larger than zero. For example at `-v 3` the logs from the minimizer, Minuit, will also be printed. These are very useful for debugging problems with the fit.
 
+<iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-003" width="560" height="315" frameborder="0" allowfullscreen></iframe>
 
 ## Combine part 2: shape-based analysis
 
@@ -566,6 +569,7 @@ plotImpacts.py -i impacts.json -o impacts
 
   - Identify the most important uncertainties using the impacts tool.
 
+<iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-004" width="560" height="315" frameborder="0" allowfullscreen></iframe>
 
 ## Further tutorials
 In this exercise we have covered some basics of RooFit and some of the most widely used features of combine. If you'd like to learn more, here are some links to other tutorials:
