@@ -40,6 +40,9 @@ cd statistics-short-exercise
 ```
 
 ## RooFit
+
+<iframe scrolling="no"  src="https://videos.cern.ch/video/OPEN-VIDEO-2020-199-001" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+
 RooFit is an object-oriented analysis environment built on ROOT, with a collection of classes designed to augment ROOT for data modelling. Combine is in turn built on RooFit, so before learning about Combine, it is useful to get to grips with a few RooFit basics. We will do that in this section.
 
 We will use python syntax in this section; you can either call the commands in an interactive python session, or just put them in a .py script. Make sure to do `from ROOT import *` at the top of your script (or in the interactive session)
